@@ -10,12 +10,12 @@ https://github.com/kjbracey-arm/mbed-os/commits/uartserial_flow
 Note: you may experience a compilation error at line 194 of `UARTSerial.cpp`, if so just edit `rx_buf` to be `_rxbuf`.
 
 # Hardware Setup
-This test requires an mbed board with a spare serial port on which the Tx output is looped back to the Rx input and the RTS output is looped back to the CTS input.  The pins used are assumed to be these pins on the board's Arduino header:
+This test requires an mbed board with a spare serial port on which the `Tx` output is looped back to the `Rx` input and the `RTS` output is looped back to the `CTS` input.  The pins used are assumed to be these pins on the board's Arduino header:
 
-* Rx:  `D0`
-* Tx:  `D1`
-* CTS: `D2`
-* RTS: `D3`
+* `Rx`:  `D0`
+* `Tx`:  `D1`
+* `CTS`: `D2`
+* `RTS`: `D3`
 
 If other pins are to be used, the pin allocation may be modified in `mbed_app.json`; please see the `mbed_app.json` in this repo for further information.
 
@@ -28,9 +28,9 @@ In addition to chosing different serial port pins, there are four other things t
 * `TEST_DURATION_SECONDS`: duration of each iteration of the test, default 10 seconds.
 
 # Running The Test
-* Clone this repo, fetch your chosen version of `mbed-os` into it and set your mbed target/toolchain.
+* Clone this repo, fetch your chosen version of `mbed-os` into it and set your chosen mbed target/toolchain as defaults.
 * Perform the hardware setup steps above and consider any items you may wish to change in `mbed_app.json`.
-* Connect your target hardware and then compile and run the test with:
+* Connect your target hardware and then compile/run the test with:
 
 `mbed test -v -n tests-unit_tests-default`
 
@@ -47,13 +47,13 @@ In addition to chosing different serial port pins, there are four other things t
     ...
 ```
 
-* If there is character loss or the expected throughput is not achieved,  you will see something like:
+* If there is character loss, or the expected throughput is not achieved, you will see something like:
 
     `:301::FAIL: Expression Evaluated To FALSE`
 
     ...and, usually, the reason for failure will be obvious from the diagnostic print that precedes that line.  If not, please check the line number in the file `TESTS\unit_tests\default\main.cpp` to determine the error cause.
 
-# Using The Debugger
+# Running The Test Under A Debugger
 If you wish to run the test under a debugger, then first do a clean compilation as follows to get debug information into your `.elf` file.
 
 `mbed test -n tests-unit_tests-default --profile mbed-os/tools/profiles/debug.json --compile -c`
