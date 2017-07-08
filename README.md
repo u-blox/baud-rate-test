@@ -1,5 +1,5 @@
 # Introduction
-This repo is intended to help resolve the issue raised here: https://github.com/ARMmbed/mbed-os/issues/4722.  It is written as an mbed Greentea test.  The test uses a serial port wired in loop-back and runs it at increasing baud rates, checking that there is no character loss and that the expected throughput is achieved.
+This repo contains code that is intended to help resolve the issue raised here: https://github.com/ARMmbed/mbed-os/issues/4722.  The code is written as an mbed Greentea test.  The test uses a serial port wired in loop-back and runs it at increasing baud rates, checking that there is no character loss and that the expected throughput is achieved.
 
 As of 7th July 2017, this repo should be used with the following fork of mbed-os:
 
@@ -54,12 +54,12 @@ In addition to chosing different serial port pins, there are four other things t
     ...and, usually, the reason for failure will be obvious from the diagnostic print that precedes that line.  If not, please check the line number in the file `TESTS\unit_tests\default\main.cpp` to determine the error cause.
 
 # Running The Test Under A Debugger
-If you wish to run the test under a debugger, then first do a clean compilation as follows to get debug information into your `.elf` file.
+If you wish to run the test under a debugger, then first do a clean compilation as follows to get debug information into your `.elf` file:
 
 `mbed test -n tests-unit_tests-default --profile mbed-os/tools/profiles/debug.json --compile -c`
 
 Drag and drop the built binary (`BUILD\tests\<target>\<toolchain>\TESTS\unit_tests\default\default.bin`) onto your target.
 
-Run `mbedls` to determine the COM port that your mbed board is connected to. Supposing it is `COM1`, you would then start the target under your debugger (providing it with the `.elf` file `BUILD\tests\<target>\<toolchain>\TESTS\unit_tests\default\default.elf`) and, on the PC side, enter the following to begin the test:
+Run `mbedls` to determine the `COM` port that your mbed board is connected to. Supposing it is `COM1`, you would then start the target under your debugger (providing it with the `.elf` file `BUILD\tests\<target>\<toolchain>\TESTS\unit_tests\default\default.elf`) and, on the PC side, enter the following to begin the test:
 
 `mbedhtrun --skip-flashing --skip-reset -p COM1:115200`
