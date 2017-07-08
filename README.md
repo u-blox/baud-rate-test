@@ -28,15 +28,15 @@ In addition to chosing different serial port pins, there are four other things t
 * `TEST_DURATION_SECONDS`: duration of each iteration of the test, default 10 seconds.
 
 # Running The Test
-* Clone this repo, fetch your chosen version of `mbed-os` into it and set your chosen mbed target/toolchain as defaults.
+* Clone this repo, fetch your chosen version of `mbed-os` into it (default if you run `mbed deploy` is kjbracey's branch as indicated above) and set your chosen mbed target/toolchain as defaults.
 * Perform the hardware setup steps above and consider any items you may wish to change in `mbed_app.json`.
 * Connect your target hardware and then compile/run the test with:
 
-`mbed test -v -n tests-unit_tests-default`
+    `mbed test -v -n tests-unit_tests-default`
 
 * When the test is running, you will see diagnostic prints of the following form:
 
-```
+    ```
     [1499504813.43][CONN][RXD] >>> Running case #1: 'Serial speed test'...
     [1499504813.43][CONN][INF] found KV pair in stream: {{__testcase_start;Serial speed test}}, queued...
     [1499504824.43][CONN][RXD]
@@ -45,7 +45,7 @@ In addition to chosing different serial port pins, there are four other things t
     [1499504835.45][CONN][RXD]
     [1499504835.47][CONN][RXD] === Test run 2, at 57600 bits/s completed after 10.001 seconds, sent 48269 byte(s), received 48269 byte(s) (throughput 48269 bits/s with a threshold of 46080 bits/s) ===
     ...
-```
+    ```
 
 * If there is character loss, or the expected throughput is not achieved, you will see something like:
 
