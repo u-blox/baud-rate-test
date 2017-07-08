@@ -1,4 +1,38 @@
 {
+    "config": {
+        "test-speed-tolerance": {
+            "help": "The accepted percentage difference between the baud rate and the achieved throughput",
+            "value": 20
+        },
+        "test-max-baud-rate": {
+            "help": "The maximum baud rate for which the above tolerance should apply",
+            "value": 460800
+        },
+        "rx-pin": {
+            "help": "The serial port's RX pin",
+            "value": "D0"
+        },
+        "tx-pin": {
+            "help": "The serial port's RX pin",
+            "value": "D1"
+        },
+        "rts-pin": {
+            "help": "The serial port's RTS pin",
+            "value": "D3"
+        },
+        "cts-pin": {
+            "help": "The serial port's RTS pin",
+            "value": "D2"
+        },
+        "use-flow-control": {
+            "help": "Whether to use flow control or not",
+            "value": true
+        },
+        "test-duration-seconds": {
+            "help": "The duration of each step of throughput testing",
+            "value": 10
+        }
+    },
     "target_overrides": {
         "*": {
             "platform.stdio-baud-rate": 115200,
