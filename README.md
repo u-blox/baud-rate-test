@@ -1,5 +1,5 @@
 # Introduction
-This repo is intended to help resolve the issue raised here: https://github.com/ARMmbed/mbed-os/issues/4722.  It is written as an mbed Greentea test.  The test uses a serial port wired in loop-back at increasing baud rates and checks that there is no character loss and that the expected throughput is achieved.
+This repo is intended to help resolve the issue raised here: https://github.com/ARMmbed/mbed-os/issues/4722.  It is written as an mbed Greentea test.  The test uses a serial port wired in loop-back and runs it at increasing baud rates, checking that there is no character loss and that the expected throughput is achieved.
 
 As of 7th July 2017, this repo should be used with the following fork of mbed-os:
 
@@ -10,7 +10,7 @@ https://github.com/kjbracey-arm/mbed-os/commits/uartserial_flow
 Note: you may experience a compilation error at line 194 of `UARTSerial.cpp`, if so just edit `rx_buf` to be `_rxbuf`.
 
 # Hardware Setup
-This test requires an mbed board with a spare serial port on which the `Tx` output is looped back to the `Rx` input and the `RTS` output is looped back to the `CTS` input.  The pins used are assumed to be these pins on the board's Arduino header:
+This test requires an mbed board with a spare serial port on which the `Tx` output has been looped back to the `Rx` input and the `RTS` output has been looped back to the `CTS` input.  The pins used are assumed to be these pins on the board's Arduino header:
 
 * `Rx`:  `D0`
 * `Tx`:  `D1`
@@ -29,7 +29,7 @@ In addition to chosing different serial port pins, there are four other things t
 
 # Running The Test
 * Clone this repo, fetch your chosen version of `mbed-os` into it (default if you run `mbed deploy` is kjbracey's branch as indicated above) and set your chosen mbed target/toolchain as defaults.
-* Perform the hardware setup steps above and consider any items you may wish to change in `mbed_app.json`.
+* Perform the target hardware setup steps above and consider any items you may wish to change in `mbed_app.json`.
 * Connect your target hardware and then compile/run the test with:
 
     `mbed test -v -n tests-unit_tests-default`
@@ -58,8 +58,8 @@ If you wish to run the test under a debugger, then first do a clean compilation 
 
 `mbed test -n tests-unit_tests-default --profile mbed-os/tools/profiles/debug.json --compile -c`
 
-Drag and drop the built binary (`BUILD\tests\<target name>\<toolchain>\TESTS\unit_tests\default\default.bin`) onto your target.
+Drag and drop the built binary (`BUILD\tests\<target>\<toolchain>\TESTS\unit_tests\default\default.bin`) onto your target.
 
-Run `mbedls` to determine the COM port that your mbed board is connected to. Supposing it is `COM1`, you would then start the target board under your debugger and, on the PC side, enter the following to begin the test:
+Run `mbedls` to determine the COM port that your mbed board is connected to. Supposing it is `COM1`, you would then start the target under your debugger (providing it with the `.elf` file `BUILD\tests\<target>\<toolchain>\TESTS\unit_tests\default\default.elf`) and, on the PC side, enter the following to begin the test:
 
 `mbedhtrun --skip-flashing --skip-reset -p COM1:115200`
