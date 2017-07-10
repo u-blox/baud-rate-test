@@ -5,7 +5,11 @@ As of 7th July 2017, this repo should be used with the following fork of mbed-os
 
 https://github.com/kjbracey-arm/mbed-os/commits/uartserial_flow
 
-...rather than `mbed-os` master, since flow control (which is really needed for high data rate throughput tests) is only exposed through the `UARTSerial()` class in this fork.
+...plus the additional commit here:
+
+https://github.com/u-blox/mbed-os/tree/uart_serial_set_baud
+
+...rather than `mbed-os` master, since changing the serial baud rate and flow control (which is really needed for high data rate throughput tests) are only exposed through the `UARTSerial()` class in this fork.
 
 Note: you may experience a compilation error at line 194 of `UARTSerial.cpp`, if so just edit `rx_buf` to be `_rxbuf`.
 
